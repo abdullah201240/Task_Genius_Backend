@@ -16,7 +16,7 @@ const Signup = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const newUser = new User({ name, phone, email, password: hashedPassword });
+        const newUser = new User({ name, phone, email, password: hashedPassword ,photo:"photo"});
         await newUser.save();
 
         return res.status(201).json({ message: 'User created successfully' });
@@ -46,10 +46,10 @@ const Login = async (req, res) => {
             return res.status(401).json({ error: 'Invalid credentials' });
         }
 
-        const { name, phone, address } = user;
+        const { name, phone,photo } = user;
         return res.status(200).json({
             message: 'Login successful',
-            data: { name, phone, email} 
+            data: { name, phone, email,photo} 
         });
     } catch (error) {
         console.error('Error in login:', error);
