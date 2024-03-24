@@ -1,5 +1,7 @@
 import User from '../model/userModel.js';
 import bcrypt from 'bcrypt';
+import multer from 'multer';
+import path from 'path';
 
 const Signup = async (req, res) => {
     try {
@@ -56,5 +58,13 @@ const Login = async (req, res) => {
         return res.status(500).json({ error: 'Internal Server Error' });
     }
 };
+const UpdateProfile = async (req, res) => {
+    const photo = req.file ? req.file.path : null;
+
+
+}
+
+ 
+
 
 export { Signup, Login };
